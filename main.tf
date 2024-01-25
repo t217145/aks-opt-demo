@@ -59,16 +59,15 @@ resource "azurerm_kubernetes_cluster_node_pool" "aks-demo-pool-compute" {
   max_count = 10
 }
 
-# resource "azurerm_kubernetes_cluster_node_pool" "aks-demo-pool-spot" {
-#   name                  = "spot"
-#   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks-demo.id
-#   vm_size    = "Standard_D2ds_v4"
-#   node_count            = 1
-#   node_labels			= {
-# 	  "nodeType" = "spot"
-#   }
-#   node_taints			= ["NotStable=true:NoSchedule"]
-#   mode = "User"
-#   enable_auto_scaling = true
-#   max_count = 10    
-# }
+resource "azurerm_kubernetes_cluster_node_pool" "aks-demo-pool-memory" {
+  name                  = "memory"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks-demo.id
+  vm_size    = "Standard_E2as_v4"
+  node_count            = 1
+  node_labels			= {
+	  "nodeType" = "memory"
+  }
+  mode = "User"
+  enable_auto_scaling = true
+  max_count = 10
+}

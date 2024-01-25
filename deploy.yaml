@@ -28,9 +28,14 @@ spec:
         args:
           - |
             while true; do
-              echo "Performing some high CPU work"
-              echo "n=1000; a=0; b=1; for (i=0; i<n; i++) { temp=a; a=b; b=temp+b; }; a" | bc >/dev/null
+              sleep 3600;
             done
+        # args:
+        #   - |
+        #     while true; do
+        #       echo "Performing some high CPU work"
+        #       echo "n=1000; a=0; b=1; for (i=0; i<n; i++) { temp=a; a=b; b=temp+b; }; a" | bc >/dev/null
+        #     done
 ---
 apiVersion: v1
 kind: Service
